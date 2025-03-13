@@ -1,41 +1,49 @@
 import { test, expect, Page } from '@playwright/test';
 
-test('usuário obrigatório', async ({ page }) => {
+test('01 - usuário obrigatório', async ({ page }) =>
+{
   await login(page, '', 'senha123')
   await toast(page, 'Informe o seu nome de usuário!s')
 });
 
-test('senha obrigatória', async ({ page }) => {
+test('02 - senha obrigatória', async ({ page }) =>
+{
   await login(page,'qa', '')
   await toast(page, 'Informe a sua senha secreta!')
 })
 
-test('usuário não existe', async ({ page }) => {
+test('03 - usuário não existe', async ({ page }) =>
+{
   await login(page,'teste', 'teste')
   await toast(page, 'Oops! Credenciais inválidas :(')
 })
 
-test('senha incorreta', async ({ page }) => {
+test('04 - senha incorreta', async ({ page }) =>
+{
   await login(page,'qa', 'teste')
   await toast(page, 'Oops! Credenciais inválidas :(')
 })
 
-test('com sucesso', async ({ page }) => {
+test('05 - com sucesso', async ({ page }) =>
+{
   await login(page,'qa', 'xperience')
   await modal(page, 'Suas credenciais são válidas :)')
 })
 
-const toast = async (page: Page, message: string) => {
+const toast = async (page: Page, message: string) =>
+{
   const target = page.locator('div[role=status]')
   await expect(target).toHaveText(message);
 }
 
-const modal = async (page: Page, message: string) => {
+const modal = async (page: Page, message: string) =>
+{
   const target = page.locator('.swal2-html-container')
   await expect(target).toHaveText(message);
 }
 
-const login = async (page: Page, user: string, pass: string) => {
+const login = async (page: Page, user: string, pass: string) =>
+{
     await page.goto('/')
 
     const username = page.locator('[name=user]')

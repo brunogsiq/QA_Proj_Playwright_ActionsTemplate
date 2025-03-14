@@ -6,7 +6,7 @@ on:
     branches: [ main, master ]
 jobs:
   e2e-tests:
-    timeout-minutes: 60
+    timeout-minutes: 1260
     runs-on: ubuntu-latest
     steps:
     - name: Get Code

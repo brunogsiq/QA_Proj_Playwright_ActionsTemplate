@@ -3,7 +3,7 @@ import { test, expect, Page } from '@playwright/test';
 test('01 - usuário obrigatório', async ({ page }) =>
 {
   await login(page, '', 'senha123')
-  await toast(page, 'Informe o seu nome de usuário!s')
+  await toast(page, 'Informe o seu nome de usuário!')
 });
 
 test('02 - senha obrigatória', async ({ page }) =>

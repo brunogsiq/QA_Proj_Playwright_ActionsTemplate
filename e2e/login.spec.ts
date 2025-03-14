@@ -24,7 +24,14 @@ test('04 - senha incorreta', async ({ page }) =>
   await toast(page, 'Oops! Credenciais inválidas :(')
 })
 
-test('05 - com sucesso', async ({ page }) =>
+//Cenário criado propositalmente para falhar e analisar o workflow
+test('05 - senha incorreta', async ({ page }) =>
+{
+  await login(page,'qa', 'teste')
+  await toast(page, 'Oops! Senha inválidas :(')
+})
+
+test('06 - com sucesso', async ({ page }) =>
 {
   await login(page,'qa', 'xperience')
   await modal(page, 'Suas credenciais são válidas :)')
